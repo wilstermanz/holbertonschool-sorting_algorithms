@@ -1,31 +1,31 @@
 #include "sort.h"
 #include <stdio.h>
 
+/**
+ * insertion_sort_list - sorts a listint_t list using insertion sort
+ * @list: pointer to head of list
+ */
+
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *key = *list;
 	listint_t *temp;
 
-	while(key->next)
+	while (key->next)
 	{
 		if ((key->next != NULL) && (key->n > key->next->n))
 		{
 			swap(list, &key, &(key->next));
 			print_list(*list);
 			temp = key->prev;
-			while (temp->prev)
+			while ((temp->prev != NULL) && (temp->n < temp->prev->n))
 			{
-				printf("inside second while loop\n");
-				if ((temp->prev != NULL) && (temp->n < temp->prev->n))
-				{
-					printf("inside if\n");
-					swap(&(*list), &temp, &(temp->prev));
-					print_list(*list);
-				}
-				temp = temp->prev;
+				swap(list, &(temp->prev), &(temp));
+				print_list(*list);
 			}
+
 		}
-		else
+		if ((key->next != NULL) && (key->n <= key->next->n))
 		{
 			key = key->next;
 		}
@@ -59,7 +59,7 @@ void swap(listint_t **head, listint_t **node1, listint_t **node2)
 	temp1->next = next;
 	temp2->next = temp1;
 	temp1->prev = temp2;
-	
-	if (temp1 == *head || temp2 == *head)
-		*head = temp1->prev;
+
+	if (*head == temp1 || *head == temp2)
+		*head = temp2;
 }
