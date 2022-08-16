@@ -22,18 +22,27 @@ int *quick_sort_recursive(int *array, int low, int high, int size)
 
 	pivot = array[high];
 	j = low;
-	for (i = low; i < high; i++)
+	for (i = low; i <+ high; i++)
 	{
 		if (array[i] <= pivot)
 		{
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
+			if (i != j)
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+				print_array(array,size);
+			}
 			j += 1;
-			print_array(array, size);
 		}
 	}
-
+	if (j != high)
+	{
+		temp = array[high];
+		array[high] = array[j];
+		array[j] = temp;
+		print_array(array, size);
+	}
 	quick_sort_recursive(array, low, j - 1, size);
 	quick_sort_recursive(array, j + 1, high, size);
 	return (array);
