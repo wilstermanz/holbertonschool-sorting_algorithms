@@ -8,8 +8,15 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *key = *list;
+	listint_t *key;
 	listint_t *temp;
+
+	if (!list)
+	{
+		return;
+	}
+
+	key = *list;
 
 	while (key->next)
 	{
@@ -60,6 +67,6 @@ void swap(listint_t **head, listint_t **node1, listint_t **node2)
 	temp2->next = temp1;
 	temp1->prev = temp2;
 
-	if (*head == temp1 || *head == temp2)
+	if (*head == temp1)
 		*head = temp2;
 }
