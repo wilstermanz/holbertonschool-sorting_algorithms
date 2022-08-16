@@ -8,8 +8,15 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *key = *list;
+	listint_t *key;
 	listint_t *temp;
+
+	if (!list)
+	{
+		return;
+	}
+
+	key = *list;
 
 	while (key->next)
 	{
