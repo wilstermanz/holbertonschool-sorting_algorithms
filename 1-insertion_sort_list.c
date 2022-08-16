@@ -60,6 +60,6 @@ void swap(listint_t **head, listint_t **node1, listint_t **node2)
 	temp2->next = temp1;
 	temp1->prev = temp2;
 
-	if (*head == temp1 || *head == temp2)
+	if (*head == temp1)
 		*head = temp2;
 }
