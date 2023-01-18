@@ -39,7 +39,7 @@ void merge_sort(int *array, size_t size)
 
 void merge(int *leftArray, size_t leftSize, int *rightArray, size_t rightSize)
 {
-	int *tempArray = malloc(sizeof(leftArray[0]) * (leftSize + rightSize));
+	int tempArray[1024];
 	int tempSize = leftSize + rightSize;
 	int i = 0, j = 0, k = 0;
 
@@ -72,7 +72,6 @@ void merge(int *leftArray, size_t leftSize, int *rightArray, size_t rightSize)
 	}
 	for (i = 0; i < tempSize; i++)
 		leftArray[i] = tempArray[i];
-	free(tempArray);
 	printf("[Done]:");
 	print_array(leftArray, tempSize);
 }
