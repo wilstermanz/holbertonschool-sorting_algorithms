@@ -72,6 +72,6 @@ void merge(int *leftArray, size_t leftSize, int *rightArray, size_t rightSize)
 	}
 	for (i = 0; i < tempSize; i++)
 		leftArray[i] = tempArray[i];
-	printf("[Done]:");
+	printf("[Done]: ");
 	print_array(leftArray, tempSize);
 }
