@@ -20,11 +20,12 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	build_max_heap(array, size);
-	for (heapSize = size; heapSize > 1; heapSize--)
+	for (heapSize = size - 1; heapSize > 1; heapSize--)
 	{
-		swap_nodes(array, size, 0, heapSize - 1);
+		swap_nodes(array, size, 0, heapSize);
 		heapify(array, size, heapSize, 0);
 	}
+	swap_nodes(array, size, 0, heapSize);
 }
 
 /**
@@ -58,11 +59,11 @@ void heapify(int *array, size_t size, size_t heapSize, size_t parentIndex)
 	size_t rightNodeIndex = leftNodeIndex + 1;
 	size_t largestIndex = parentIndex;
 
-	if (leftNodeIndex < heapSize - 1
+	if (leftNodeIndex <= heapSize - 1
 			&& array[leftNodeIndex] > array[largestIndex])
 		largestIndex = leftNodeIndex;
 
-	if (rightNodeIndex < heapSize - 1
+	if (rightNodeIndex <= heapSize - 1
 			&& array[rightNodeIndex] > array[largestIndex])
 		largestIndex = rightNodeIndex;
 
