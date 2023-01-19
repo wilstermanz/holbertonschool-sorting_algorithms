@@ -20,7 +20,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	build_max_heap(array, size);
-	for (heapSize = size; heapSize > 0; heapSize--)
+	for (heapSize = size; heapSize > 1; heapSize--)
 	{
 		swap_nodes(array, size, 0, heapSize - 1);
 		heapify(array, size, heapSize, 0);
