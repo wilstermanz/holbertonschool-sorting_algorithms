@@ -72,10 +72,13 @@ void radix_sort(int *array, size_t size)
 	size_t sig_dig;
 	int max;
 
-	max = get_max(array, size);
-	for (sig_dig = 1; max / sig_dig > 0; sig_dig *= 10)
+	if (array || size > 1)
 	{
-		count_sort(array, size, sig_dig);
-		print_array(array, size);
+		max = get_max(array, size);
+		for (sig_dig = 1; max / sig_dig > 0; sig_dig *= 10)
+		{
+			count_sort(array, size, sig_dig);
+			print_array(array, size);
+		}
 	}
 }
